@@ -4,11 +4,129 @@
 }
 
 :root {
-  --primary-color: #000000;
-  --text-color: #ffffff;
+  --primary-color: #fff;
+  --text-color: #000;
 }
 
 body {
+  font-family: sans-serif;
   background-color: var(--primary-color);
   color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  height: 50px;
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  border-width: 0 0 2px 0;
+  border-style: solid;
+}
+
+.searchInput {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  background-color: transparent;
+  width: 200px;
+  height: 28px;
+  padding-left: 10px;
+  border: 0px;
+}
+
+.searchImg {
+  width: 20px;
+  height: 15px;
+}
+
+.weatherBox {
+  width: 400px;
+  background-color: transparent;
+  color: var(--text-color);
+  opacity: 1;
+  margin: 30px auto;
+  padding: 10px;
+  /* border: 1px solid green; */
+}
+
+.countryBox {
+  text-align: center;
+  font-size: 1.5em;
+  padding: 10px;
+}
+
+.temperatureBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.temperatureContent {
+  font-size: 8em;
+  text-align: center;
+}
+
+.temperatureTypeBox {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.weatherTypeBox {
+  text-align: center;
+  padding: 10px;
+}
+
+.weatherTypeBox p {
+  font-weight: bold;
+}
+
+.weatherDetailsBox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#weatherImg {
+  margin: 15px 0;
+}
+
+.detailBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 7px 0;
+}
+
+.detailImg {
+  width: 25px;
+  height: 25px;
+  margin: 0 5px;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  color: var(--text-color);
+  font-size: 2em;
+  padding: 0 10px;
+}
+
+button:hover {
+  cursor: pointer;
 }
