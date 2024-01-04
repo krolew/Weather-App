@@ -6,6 +6,89 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <h1>Show</h1>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <h2>Forecast</h2>
+        </div>
+        <div class="searchBar">
+          <div class="inputBox">
+            <input
+              id="weatherInput"
+              type="text"
+              class="searchInput"
+              placeholder="City"
+            />
+            <img
+              src="<%= require('./assets/search.svg') %>"
+              class="searchImg"
+              alt="search"
+            />
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="weatherBox">
+          <div class="countryBox">
+            <!--   -<img src="" alt="weatherImage" id="weatherImg" height="" width="" />
+          -->
+            <p id="country"></p>
+          </div>
+          <div class="temperatureBox">
+            <div class="temperatureContent">
+              <p id="temperature"></p>
+            </div>
+            <div class="temperatureTypeBox">
+              <button id="btnCelcius" class="btn-celcius">C</button>
+              <button id="btnFarenheit" class="btn-farenheit">F</button>
+            </div>
+          </div>
+          <div class="weatherTypeBox">
+            <p id="type"></p>
+            <img
+              src=""
+              alt="weatherImage"
+              id="weatherImg"
+              height="64px"
+              width="64px"
+            />
+          </div>
+          <div class="weatherDetailsBox">
+            <div class="detailBox">
+              <img
+                src="<%= require('./assets/visibility.svg') %>"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="vis_km"></p>
+            </div>
+            <div class="detailBox">
+              <img
+                src="<%= require('./assets/humidity.svg') %>"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="humidity"></p>
+            </div>
+            <div class="detailBox">
+              <img
+                src="<%= require('./assets/wind.svg') %>"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="wind_kph"></p>
+            </div>
+            <div class="detailBox">
+              <img
+                src="<%= require('./assets/barometr.svg') %>"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="pressure_in"></p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
