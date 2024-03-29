@@ -28,7 +28,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 .inputBox {
@@ -55,6 +55,14 @@ header {
     height: 15px;
 }
 
+.errorInputBox{
+   border-color: red;
+}
+
+.errorText{
+    display: none;
+    color: red;
+}
 .weatherBox {
     max-width: 400px;
     background-color: transparent;
@@ -78,6 +86,7 @@ header {
 }
 
 .temperatureContent {
+    display: flex;
     font-size: 8em;
     text-align: center;
 }
@@ -132,10 +141,15 @@ button:hover {
     cursor: pointer;
 }
 
-button:focus {
+.active {
     border: 1px solid green;
     border-radius: 2px;
 }
+
+/*button:focus {*/
+/*    border: 1px solid green;*/
+/*    border-radius: 2px;*/
+/*}*/
 
 .weatherFiveDaysContainer {
     /*display: flex;*/
