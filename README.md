@@ -8,3 +8,4 @@ Created with:
 - webpack
 
 Check out demo:
+https://krolew.github.io/Weather-App/
