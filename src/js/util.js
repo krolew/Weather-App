@@ -27,8 +27,7 @@ const Util = (() => {
         return Math.round((temp - 32.0) / 1.8);
     }
 
-
-       return {
+    return {
         extractFiveDaysWeather,
         getDayName,
         celsiusToFahrenheit,
