@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  <script defer src="bundlea7cc8e4626df2cbe4223.js"></script></head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <h2>Forecast</h2>
+        </div>
+        <div class="searchBar">
+          <div class="inputBox">
+            <input
+              id="weatherInput"
+              type="text"
+              class="searchInput"
+              placeholder="City"
+            />
+            <img
+              src="search.svg"
+              class="searchImg"
+              alt="search"
+            />
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="weatherBox">
+          <div class="countryBox">
+            <!--   -<img src="" alt="weatherImage" id="weatherImg" height="" width="" />
+          -->
+            <p id="country"></p>
+          </div>
+          <div class="temperatureBox">
+            <div class="temperatureContent">
+              <p id="temperature"></p>
+            </div>
+            <div class="temperatureTypeBox">
+              <button id="btnCelcius" class="btn-celcius">C</button>
+              <button id="btnFarenheit" class="btn-farenheit">F</button>
+            </div>
+          </div>
+          <div class="weatherTypeBox">
+            <p id="type"></p>
+            <img
+              src=""
+              alt="weatherImage"
+              id="weatherImg"
+              height="64px"
+              width="64px"
+            />
+          </div>
+          <div class="weatherDetailsBox">
+            <div class="detailBox">
+              <img
+                src="visibility.svg"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="vis_km"></p>
+            </div>
+            <div class="detailBox">
+              <img
+                src="humidity.svg"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="humidity"></p>
+            </div>
+            <div class="detailBox">
+              <img
+                src="wind.svg"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="wind_kph"></p>
+            </div>
+            <div class="detailBox">
+              <img
+                src="barometr.svg"
+                alt="·"
+                class="detailImg"
+              />
+              <p id="pressure_in"></p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
