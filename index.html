@@ -1,94 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Weather App</title>
-  <script defer src="bundlea7cc8e4626df2cbe4223.js"></script></head>
-  <body>
-    <div class="container">
-      <header>
-        <div class="logo">
-          <h2>Forecast</h2>
-        </div>
+<script defer src="bundle5a0e37be8ebd5d3effc0.js"></script></head>
+<body>
+<div class="container">
+    <header>
         <div class="searchBar">
-          <div class="inputBox">
-            <input
-              id="weatherInput"
-              type="text"
-              class="searchInput"
-              placeholder="City"
-            />
-            <img
-              src="search.svg"
-              class="searchImg"
-              alt="search"
-            />
-          </div>
+            <div class="inputBox">
+                <input
+                        id="weatherInput"
+                        type="text"
+                        class="searchInput"
+                        placeholder="Enter City"
+                />
+                <img
+                        src="search.svg"
+                        class="searchImg"
+                        alt="search"
+                />
+            </div>
+            <p class="errorInput"></p>
         </div>
-      </header>
-      <main>
+    </header>
+    <main>
         <div class="weatherBox">
-          <div class="countryBox">
-            <!--   -<img src="" alt="weatherImage" id="weatherImg" height="" width="" />
-          -->
-            <p id="country"></p>
-          </div>
-          <div class="temperatureBox">
-            <div class="temperatureContent">
-              <p id="temperature"></p>
+            <div class="countryBox">
+                <p id="country"></p>
             </div>
-            <div class="temperatureTypeBox">
-              <button id="btnCelcius" class="btn-celcius">C</button>
-              <button id="btnFarenheit" class="btn-farenheit">F</button>
+            <div class="temperatureBox">
+                <div class="temperatureContent">
+                    <p id="temperature" class="temperature"></p>
+                    <label for="temperature" class="temperatureUnit">°</label>
+                </div>
+                <div class="temperatureTypeBox">
+                    <button id="btnCelsius" class="btn-celsius active">C</button>
+                    <button id="btnFahrenheit" class="btn-fahrenheit">F</button>
+                </div>
             </div>
-          </div>
-          <div class="weatherTypeBox">
-            <p id="type"></p>
-            <img
-              src=""
-              alt="weatherImage"
-              id="weatherImg"
-              height="64px"
-              width="64px"
-            />
-          </div>
-          <div class="weatherDetailsBox">
-            <div class="detailBox">
-              <img
-                src="visibility.svg"
-                alt="·"
-                class="detailImg"
-              />
-              <p id="vis_km"></p>
+            <div class="weatherTypeBox">
+                <p id="type"></p>
+                <img
+                        src=""
+                        alt="weatherImage"
+                        id="weatherImg"
+                        height="64px"
+                        width="64px"
+                />
             </div>
-            <div class="detailBox">
-              <img
-                src="humidity.svg"
-                alt="·"
-                class="detailImg"
-              />
-              <p id="humidity"></p>
+            <div class="weatherDetailsBox">
+                <div class="detailBox">
+                    <img
+                            src="visibility.svg"
+                            alt="·"
+                            class="detailImg"
+                    />
+                    <p id="vis_km"></p>
+                </div>
+                <div class="detailBox">
+                    <img
+                            src="humidity.svg"
+                            alt="·"
+                            class="detailImg"
+                    />
+                    <p id="humidity"></p>
+                </div>
+                <div class="detailBox">
+                    <img
+                            src="wind.svg"
+                            alt="·"
+                            class="detailImg"
+                    />
+                    <p id="wind_kph"></p>
+                </div>
+                <div class="detailBox">
+                    <img
+                            src="barometr.svg"
+                            alt="·"
+                            class="detailImg"
+                    />
+                    <p id="pressure_in"></p>
+                </div>
             </div>
-            <div class="detailBox">
-              <img
-                src="wind.svg"
-                alt="·"
-                class="detailImg"
-              />
-              <p id="wind_kph"></p>
-            </div>
-            <div class="detailBox">
-              <img
-                src="barometr.svg"
-                alt="·"
-                class="detailImg"
-              />
-              <p id="pressure_in"></p>
-            </div>
-          </div>
         </div>
-      </main>
-    </div>
-  </body>
+
+        <div class="weatherFiveDaysContainer">
+            <div class="weatherFiveDaysHeader">
+                <h3>Forecast for 5 days</h3>
+            </div>
+            <div class="weatherFiveDaysCards">
+
+            </div>
+        </div>
+    </main>
+</div>
+</body>
 </html>
