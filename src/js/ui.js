@@ -3,59 +3,78 @@ import Util from "../js/util"
 import api from "../js/api";
 
 const App = (() => {
-    function init() {
+    async function init() {
         loadHomepage();
     }
 
-    function loadHomepage() {
+    async function loadHomepage() {
         initalizeButtons();
+        await defaultCity();
     }
 
     function initalizeButtons() {
         const searchInput = document.getElementById("weatherInput");
+
         searchInput.addEventListener("keyup", handleSearchInput);
+
         handleButtonGroups();
     }
 
     async function handleSearchInput(e) {
         e.preventDefault();
+        clearErrorStyles();
 
         if (e.key === "Enter") {
             await handleSubmitSearchInput(e);
         }
     }
 
+    async function defaultCity() {
+        let location = "Warszawa";
+        await handleSubmitActions(location);
+    }
+
     async function handleSubmitSearchInput(e) {
         e. preventDefault();
 
         let location = e.target.value;
-        
 
-        try {
-            let [currentWeather, fiveDayWeather] = await Api.getWeathers(location);
+        if (location.trim() === "")
+            return;
 
-            if (currentWeather === undefined || fiveDayWeather === undefined) {
-                return;
-            }
-
-            fiveDayWeather = Util.extractFiveDaysWeather(fiveDayWeather.list);
-            renderWeather(currentWeather);
-            renderFiveDayWeather(fiveDayWeather);
-        } catch (err) {
-            console.log(err);
-        } finally {
-           clearSearchInput(e.target);
-        }
+        await handleSubmitActions(location);
     }
 
-    function handleErrorMessage(err) {
-       // console.log(err.message);
+     async function handleSubmitActions(location) {
+         try {
+             let [currentWeather, fiveDayWeather] = await Api.getWeathers(location);
+
+             if (currentWeather === undefined || fiveDayWeather === undefined) {
+                 handleErrorMessage("City not found");
+                 return new Error("city not found");
+             }
+
+             fiveDayWeather = Util.extractFiveDaysWeather(fiveDayWeather.list);
+             renderWeather(currentWeather);
+             clearFiveDayWeatherCardDiv();
+             renderFiveDayWeather(fiveDayWeather);
+             setCelsiusBtnActiveAfterSubmit();
+         } catch (err) {
+             console.log(err);
+         } finally {
+             clearSearchInputValue();
+         }
+     }
+
+    function handleErrorMessage(errMessage) {
+       const inputBox = document.querySelector(".inputBox");
+       const errorInput = document.querySelector(".errorInput");
+
+       errorInput.innerText = errMessage;
+       errorInput.style.display = "block";
+       inputBox.style.borderBottom= "2px solid red";
     }
 
-    function clearSearchInput(input) {
-        console.log(input);
-        input.value = "";
-    }
     function handleButtonGroups() {
         const buttonGroup = document.querySelectorAll("button");
         buttonGroup.forEach(button => {
@@ -63,26 +82,23 @@ const App = (() => {
         })
     }
 
-    function setCelsiusBtnActive() {
-        const celsiusBtn = document.querySelector("#btnCelsius");
 
-    }
     function handleBtns(e) {
-       let prevButton = document.querySelector(".active");
+        let prevButton = document.querySelector(".active");
 
-       if (prevButton !== null) {
-           if (prevButton !== e.target) {
-               prevButton.classList.remove("active");
-               e.target.classList.add("active");
+        if (prevButton !== e.target) {
+            prevButton.classList.remove("active");
+            e.target.classList.add("active");
 
-               if (e.target.id === "btnCelsius")
-                   handleCelsiusBtn(e);
+            if (e.target.id === "btnCelsius") {
+                handleCelsiusBtn(e);
+            }
 
-               if (e.target.id === "btnFahrenheit")
-                   handleFahrenheitBtn(e);
-           }
-       }
-    }
+            if (e.target.id === "btnFahrenheit") {
+                handleFahrenheitBtn(e);
+            }
+        }
+     }
 
     function handleCelsiusBtn(e) {
         e.target.addEventListener("click", changeTemperatureDegree(Util.fahrenheitToCelsius))
@@ -92,6 +108,17 @@ const App = (() => {
         e.target.addEventListener("click", changeTemperatureDegree(Util.celsiusToFahrenheit));
     }
 
+    function setCelsiusBtnActiveAfterSubmit() {
+        const celsiusBtn = document.querySelector("#btnCelsius");
+
+        let activeBtn =  document.querySelector(".active");
+
+        if (activeBtn !== celsiusBtn) {
+            activeBtn.classList.remove("active");
+        }
+
+        celsiusBtn.classList.add("active");
+    }
     function changeTemperatureDegree(callback) {
         const temperatures = document.querySelectorAll(".temperature");
 
@@ -101,6 +128,24 @@ const App = (() => {
         });
     }
 
+    function clearSearchInputValue(input) {
+        const searchInput = document.getElementById("weatherInput");
+        searchInput.value = "";
+    }
+    function clearFiveDayWeatherCardDiv() {
+        const weatherFiveDaysCardsDiv = document.querySelector(".weatherFiveDaysCards");
+
+        while (weatherFiveDaysCardsDiv.firstChild) {
+            weatherFiveDaysCardsDiv.removeChild(weatherFiveDaysCardsDiv.firstChild);
+        }
+    }
+    function clearErrorStyles() {
+        const inputBox = document.querySelector(".inputBox");
+        const errorInput = document.querySelector(".errorInput");
+
+        errorInput.style.display = "none";
+        inputBox.style.borderBottom= "2px solid black";
+    }
     function renderFiveDayWeather(data) {
         data.forEach(renderWeatherCard);
     }
@@ -173,7 +218,6 @@ const App = (() => {
 
     return {
         init,
-        handleErrorMessage,
     }
 
 })()
